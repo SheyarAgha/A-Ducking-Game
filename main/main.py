@@ -1,13 +1,14 @@
 import sys
 import pygame
+from DuckSprite import Duck
 
 # pygame settings init
 pygame.init()
 screen = pygame.display.set_mode((1600, 800))
 pygame.display.set_caption('A Ducking Game')
-font_venti = pygame.font.Font('font/Pixeltype.ttf', 200)
-font_grande = pygame.font.Font('font/Pixeltype.ttf', 100)
-font_tall = pygame.font.Font('font/Pixeltype.ttf', 50)
+font_venti = pygame.font.Font('../resources/font/Pixeltype.ttf', 200)
+font_grande = pygame.font.Font('../resources/font/Pixeltype.ttf', 100)
+font_tall = pygame.font.Font('../resources/font/Pixeltype.ttf', 50)
 FPS = pygame.time.Clock()
 
 game_state = 'main_menu'
@@ -19,26 +20,11 @@ main_msg_rect = main_msg.get_rect(center=(800,350))
 main_instruct = font_tall.render('How to play', False, (0, 205, 0))
 main_instruct_rect = main_instruct.get_rect(center=(1500, 50))
 
-background = pygame.image.load('background/full-bg.png').convert()
+background = pygame.image.load('../resources/background/full-bg.png').convert()
 background = pygame.transform.scale(background, (1600, 800))
 
-# Duck sprite
-duck_idle_1 = pygame.image.load('duck/Sprites/Idle/Idle1.png').convert_alpha()
-duck_idle_1_scaled = pygame.transform.scale(duck_idle_1, (200, 200))
-duck_idle_2 = pygame.image.load('duck/Sprites/Idle/Idle2.png').convert_alpha()
-duck_idle_2_scaled = pygame.transform.scale(duck_idle_2, (200, 200))
-duck_idle = [duck_idle_1_scaled, duck_idle_2_scaled]
-duck_idle_index = 0
-duck = duck_idle[duck_idle_index]
-duck_rect = duck.get_rect(midbottom=(80, 700))
-
-def duck_animate():
-    global duck, duck_idle_index
-
-    duck_idle_index += 0.05
-    if duck_idle_index >= len(duck_idle):
-        duck_idle_index = 0
-    duck = duck_idle[int(duck_idle_index)]
+player = pygame.sprite.GroupSingle()
+player.add(Duck())
 
 
 # game loop
@@ -65,9 +51,8 @@ while True:
     elif game_state == 'instruct_menu':
         pass
     elif game_state == 'active':
-        duck_animate()
-        screen.blit(duck, duck_rect)
-
+        player.draw(screen)
+        player.update()
 
 
     pygame.display.update()
