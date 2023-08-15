@@ -1,6 +1,7 @@
 import sys
 import pygame
 from DuckSprite import Duck
+from FoxSprite import Fox
 
 # pygame settings init
 pygame.init()
@@ -25,6 +26,9 @@ background = pygame.transform.scale(background, (1600, 800))
 
 player = pygame.sprite.GroupSingle()
 player.add(Duck())
+
+enemy = pygame.sprite.Group()
+enemy.add(Fox())
 
 
 # game loop
@@ -53,5 +57,7 @@ while True:
     elif game_state == 'active':
         player.draw(screen)
         player.update()
+        enemy.draw(screen)
+        enemy.update()
 
     pygame.display.update()

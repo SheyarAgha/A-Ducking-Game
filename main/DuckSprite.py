@@ -7,21 +7,21 @@ class Duck(pygame.sprite.Sprite):
 
         # Idle images
         idle_1 = pygame.image.load('../resources/duck/Sprites/Idle/Idle1.png').convert_alpha()
-        idle_1_scaled = pygame.transform.scale(idle_1, (200, 200))
+        idle_1_scaled = pygame.transform.scale(idle_1, (125, 125))
         idle_2 = pygame.image.load('../resources/duck/Sprites/Idle/Idle2.png').convert_alpha()
-        idle_2_scaled = pygame.transform.scale(idle_2, (200, 200))
+        idle_2_scaled = pygame.transform.scale(idle_2, (125, 125))
         self.idle = [idle_1_scaled, idle_2_scaled]
 
         # Walk images
         walk_1 = pygame.image.load('../resources/duck/Sprites/Walking-Running/Walking1.png').convert_alpha()
-        walk_1_scaled = pygame.transform.scale(walk_1, (200, 200))
+        walk_1_scaled = pygame.transform.scale(walk_1, (125, 125))
         walk_2 = pygame.image.load('../resources/duck/Sprites/Walking-Running/Walking2.png').convert_alpha()
-        walk_2_scaled = pygame.transform.scale(walk_2, (200, 200))
+        walk_2_scaled = pygame.transform.scale(walk_2, (125, 125))
         self.walk = [walk_1_scaled, walk_2_scaled]
 
         # Jump image
         jump = pygame.image.load('../resources/duck/Sprites/Jumping/Jumping.png').convert_alpha()
-        self.jumping = pygame.transform.scale(jump, (200, 200))
+        self.jumping = pygame.transform.scale(jump, (125, 125))
 
         # Initial state
         self.animate_state = 'Idle'
