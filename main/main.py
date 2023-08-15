@@ -54,5 +54,4 @@ while True:
         player.draw(screen)
         player.update()
 
-
     pygame.display.update()
